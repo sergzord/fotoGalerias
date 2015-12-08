@@ -1,11 +1,10 @@
 {
-    "name": "FotoGalerias",
+    "name": "SergioRamos/FotoGalerias",
     "license": "proprietary",
     "authors":[{
             "name":"Sergio Ramos",
             "role":"Desarollador"
     }],
-    "vendor":"Sergio Ramos",
     "type": "project",
     "autoload": {
         "psr-4": {
