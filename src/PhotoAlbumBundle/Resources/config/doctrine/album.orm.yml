@@ -1,0 +1,17 @@
+PhotoAlbumBundle\Entity\album:
+    type: entity
+    table: albums
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        descripcion:
+            type: string
+            length: 255
+    manyToOne:
+        usuario:
+            targetEntity: usuario
+            joinColumn:
+                name: usuario_id
+                referencedColumnName: id

@@ -1,0 +1,26 @@
+<!html>
+<html>
+    <head>
+        <link type="text/css" href="{{ asset('/css/estilo.css') }}" rel="stylesheet"/>
+        <title>Photo albums</title>
+    </head>
+    <body>
+        <div id="contenedor">
+            <div id="header">Photo albums</div>
+            <div id="menu">
+                <a href="{{url('photo_album_homepage')}}">Inicio</a>
+                <a href="{{url('verUsuarios')}}">Usuarios</a>
+            </div>
+            <div id="contenido">
+                {% block contenido %}
+                    <h2>Bienvenido a Photo albums!</h2>
+                    <strong>Últimos albums :</strong><br/><br/>
+                    {% for album in albums %}
+                        <a href="">{{album.descripcion}}</a> - de {{album.usuario.nombre}}<br/>
+                    {% endfor %}
+                {% endblock %}
+            </div>
+            <div id="footer">Sergio Ramos - APP curso Symfony - Contacto {{email_contacto}}</div>
+        </div>
+    </body>
+</html>

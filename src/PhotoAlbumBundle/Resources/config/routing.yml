@@ -1,0 +1,10 @@
+photo_album_homepage:
+    path:     /
+    defaults: { _controller: PhotoAlbumBundle:Default:index }
+carga_datos:
+    path: /cargadatos
+    defaults: { _controller: PhotoAlbumBundle:Default:create }
+verUsuarios:
+    path: /usuarios
+    defaults: { _controller: PhotoAlbumBundle:Default:verUsuarios }    
+    
