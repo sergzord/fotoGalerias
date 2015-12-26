@@ -6,5 +6,11 @@ carga_datos:
     defaults: { _controller: PhotoAlbumBundle:Default:create }
 verUsuarios:
     path: /usuarios
-    defaults: { _controller: PhotoAlbumBundle:Default:verUsuarios }    
+    defaults: { _controller: PhotoAlbumBundle:Usuarios:verUsuarios }   
+crearUsuario:
+    path: /usuarios/crear
+    defaults: { _controller: PhotoAlbumBundle:Usuarios:crear }
+crearAlbum:
+    path: /albums/crear
+    defaults: { _controller: PhotoAlbumBundle:Default:crear }
     

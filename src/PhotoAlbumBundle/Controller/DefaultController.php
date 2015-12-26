@@ -6,6 +6,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use PhotoAlbumBundle\Entity\usuario;
 use PhotoAlbumBundle\Entity\album;
 use PhotoAlbumBundle\Entity\foto;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class DefaultController extends Controller
 {
@@ -14,13 +18,6 @@ class DefaultController extends Controller
         $em=$this->getDoctrine()->getRepository('PhotoAlbumBundle:album');
         $albums=$em->findAll();
         return $this->render('PhotoAlbumBundle:Default:index.html.twig',array('albums'=>$albums));
-    }
-    
-    public function verUsuariosAction()
-    {
-       $em=$this->getDoctrine()->getRepository('PhotoAlbumBundle:usuario');
-       $usuarios=$em->findAll();
-       return $this->render('PhotoAlbumBundle:Default:usuarios.html.twig',array('usuarios'=>$usuarios)); 
     }
     
     public function createAction()
@@ -46,6 +43,39 @@ class DefaultController extends Controller
         $em->flush();
         
         return $this->render('PhotoAlbumBundle:Default:cargaDatos.html.twig');
+    }
+    
+    public function crearAction(Request $request) 
+    {
+        $album=new album();
+        
+        $em=$this->getDoctrine()->getRepository('PhotoAlbumBundle:usuario');
+        $usuarios=$em->findAll();
+        
+        $form=$this->createFormBuilder($album)
+                ->add('descripcion',TextType::class)
+                ->add('usuario',ChoiceType::class, array(
+                    'choices'  =>  $usuarios,
+                    'choices_as_values' => true,
+                    'choice_label' => function($usuario, $key, $index) {
+                    return strtoupper($usuario->getNombre());
+                    }
+                ))
+                ->add('Guardar',SubmitType::class)
+                ->getForm();
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            $em=$this->getDoctrine()->getEntityManager();
+            $em->persist($album);
+            $em->flush();
+            
+            return $this->redirectToRoute('photo_album_homepage');
+        }
+    
+        return $this->render('PhotoAlbumBundle:Default:CrearAlbum.html.twig',array('form'=>$form->createView()));
     }
     
 }

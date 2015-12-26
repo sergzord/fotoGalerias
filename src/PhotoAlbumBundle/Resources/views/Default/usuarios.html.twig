@@ -6,4 +6,8 @@
     {% for usuario in usuarios %}
         <a href="">{{usuario.nombre}}</a> - id: {{usuario.id}}<br/>
     {% endfor %}
+    <br/>
+    <form action="{{url('crearUsuario')}}">
+        <input type="submit" class="boton" value="Crear usuario" />
+    </form>
 {% endblock %}

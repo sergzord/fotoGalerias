@@ -13,7 +13,7 @@ class album {
     private $descripcion;
     private $usuario;
     
-    public function __construct($descripcion, usuario $usuario) {
+    public function __construct($descripcion='', usuario $usuario=null) {
         $this->descripcion=$descripcion;
         $this->usuario=$usuario;
     }

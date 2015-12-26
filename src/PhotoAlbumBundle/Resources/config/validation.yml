@@ -1,0 +1,6 @@
+PhotoAlbumBundle\Entity\usuario:
+    properties:
+        nombre:
+            - NotBlank: ~
+        password:
+            - NotBlank: ~

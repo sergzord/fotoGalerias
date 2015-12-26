@@ -8,7 +8,7 @@
         <div id="contenedor">
             <div id="header">Photo albums</div>
             <div id="menu">
-                <a href="{{url('photo_album_homepage')}}">Inicio</a>
+                <a href="{{url('photo_album_homepage')}}">Albums</a>
                 <a href="{{url('verUsuarios')}}">Usuarios</a>
             </div>
             <div id="contenido">
@@ -18,6 +18,10 @@
                     {% for album in albums %}
                         <a href="">{{album.descripcion}}</a> - de {{album.usuario.nombre}}<br/>
                     {% endfor %}
+                    <br/>
+                    <form action="{{url('crearAlbum')}}">
+                        <input type="submit" class="boton" value="Crear Album" />
+                    </form>
                 {% endblock %}
             </div>
             <div id="footer">Sergio Ramos - APP curso Symfony - Contacto {{email_contacto}}</div>

@@ -12,3 +12,5 @@ PhotoAlbumBundle\Entity\usuario:
         password:
             type: string
             length: 255
+
+            
