@@ -4,17 +4,20 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
-
+        usuariosProvider:
+            entity:
+                class: PhotoAlbumBundle\Entity\usuario
+                property: nombre
+            
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
+       
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
-        main:
-            anonymous: ~
             # activate different ways to authenticate
 
             # http_basic: ~
@@ -22,3 +25,22 @@ security:
 
             # form_login: ~
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+        photoAlbums:
+            pattern: ^/
+            anonymous: ~
+            logout:
+                path:   /logout
+                target: /
+            form_login:
+                login_path: /login
+                check_path: /login_check
+        
+    access_control:
+        - {path: ^/admin, roles: 'ROLE_ADMIN'}
+    encoders:
+        PhotoAlbumBundle\Entity\usuario:
+            algorithm: sha1
+            encode_as_base64: false
+            iterations: 1
+        
+        

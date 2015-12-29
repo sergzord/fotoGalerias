@@ -1,17 +1,20 @@
 <?php
 
 namespace PhotoAlbumBundle\Entity;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Description of usuario
  *
  * @author Sergio
  */
-class usuario 
+class usuario implements UserInterface,  \Serializable
 {
     private $id;
     private $nombre;
     private $password;
+    private $rol;
+    private $activo;
     
     public function __construct($nombre='',$password='') {
         $this->nombre=$nombre;
@@ -132,5 +135,87 @@ class usuario
     public function getUsuario()
     {
         return $this->usuario;
+    }
+
+    public function eraseCredentials() {
+        
+    }
+
+    public function getRoles() {
+        return array($this->getRol());
+    }
+
+    public function getSalt() {
+        return null;
+    }
+
+    public function getUsername() {
+        return $this->getNombre();
+    }
+
+
+    /**
+     * Set activo
+     *
+     * @param \int $activo
+     *
+     * @return usuario
+     */
+    public function setActivo($activo)
+    {
+        $this->activo = $activo;
+
+        return $this;
+    }
+
+    /**
+     * Get activo
+     *
+     * @return \int
+     */
+    public function getActivo()
+    {
+        return $this->activo;
+    }
+
+    public function serialize() {
+         return serialize(array(
+            $this->id,
+            $this->nombre,
+            $this->password,
+        ));
+    }
+
+    public function unserialize($serialized) {
+        list (
+            $this->id,
+            $this->nombre,
+            $this->password,
+        ) = unserialize($serialized);
+    }
+
+
+    /**
+     * Set rol
+     *
+     * @param string $rol
+     *
+     * @return usuario
+     */
+    public function setRol($rol)
+    {
+        $this->rol = $rol;
+
+        return $this;
+    }
+
+    /**
+     * Get rol
+     *
+     * @return string
+     */
+    public function getRol()
+    {
+        return $this->rol;
     }
 }

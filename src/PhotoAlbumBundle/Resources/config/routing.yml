@@ -5,12 +5,25 @@ carga_datos:
     path: /cargadatos
     defaults: { _controller: PhotoAlbumBundle:Default:create }
 verUsuarios:
-    path: /usuarios
+    path: /admin/usuarios
     defaults: { _controller: PhotoAlbumBundle:Usuarios:verUsuarios }   
 crearUsuario:
-    path: /usuarios/crear
+    path: /admin/usuarios/crear
     defaults: { _controller: PhotoAlbumBundle:Usuarios:crear }
 crearAlbum:
     path: /albums/crear
     defaults: { _controller: PhotoAlbumBundle:Default:crear }
+login_route:
+    path:     /login
+    defaults: { _controller: PhotoAlbumBundle:Security:login }
+login_check:
+    path: /login_check
+logout:
+    path: /logout
+registro:
+    path: /registro
+    defaults: { _controller: PhotoAlbumBundle:Usuarios:altaUsuario }   
+editarUsuario:
+    path: /admin/usuarios/{id}
+    defaults: { _controller: PhotoAlbumBundle:Usuarios:editarUsuario }       
     

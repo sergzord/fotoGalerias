@@ -15,8 +15,8 @@ class DefaultController extends Controller
 {
     public function indexAction()
     {
-        $em=$this->getDoctrine()->getRepository('PhotoAlbumBundle:album');
-        $albums=$em->findAll();
+        $albums=$this->get('usuarios.ultimos')->obtenerUltimosUsuarios();
+       
         return $this->render('PhotoAlbumBundle:Default:index.html.twig',array('albums'=>$albums));
     }
     
@@ -24,7 +24,9 @@ class DefaultController extends Controller
     {
         $usuario=new usuario();
         $usuario->setNombre('Sergio');
-        $usuario->setPassword('1234');
+        $usuario->setPassword('7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
+        $usuario->setActivo(1);
+        $usuario->setRol('ROLE_ADMIN');
         
         $em=$this->getDoctrine()->getManager();
         $em->persist($usuario);

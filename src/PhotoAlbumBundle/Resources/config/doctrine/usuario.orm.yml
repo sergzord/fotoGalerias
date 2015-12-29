@@ -9,8 +9,16 @@ PhotoAlbumBundle\Entity\usuario:
         nombre:
             type: string
             length: 255
+            unique: true
         password:
             type: string
             length: 255
+        activo:
+            type: integer
+            length: 1
+        rol:
+            type: string
+            length: 255    
+            
 
             
