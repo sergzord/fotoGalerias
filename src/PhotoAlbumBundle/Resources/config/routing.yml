@@ -1,29 +1,29 @@
 photo_album_homepage:
-    path:     /
-    defaults: { _controller: PhotoAlbumBundle:Default:index }
+    path:     /{_locale}
+    defaults: { _controller: PhotoAlbumBundle:Default:index,_locale: es }
 carga_datos:
     path: /cargadatos
     defaults: { _controller: PhotoAlbumBundle:Default:create }
 verUsuarios:
-    path: /admin/usuarios
+    path: /{_locale}/admin/usuarios
     defaults: { _controller: PhotoAlbumBundle:Usuarios:verUsuarios }   
 crearUsuario:
-    path: /admin/usuarios/crear
+    path: /{_locale}/admin/usuarios/crear
     defaults: { _controller: PhotoAlbumBundle:Usuarios:crear }
 crearAlbum:
-    path: /albums/crear
+    path: /{_locale}/albums/crear
     defaults: { _controller: PhotoAlbumBundle:Default:crear }
 login_route:
-    path:     /login
+    path:     /{_locale}/login
     defaults: { _controller: PhotoAlbumBundle:Security:login }
 login_check:
     path: /login_check
 logout:
     path: /logout
 registro:
-    path: /registro
+    path: /{_locale}/registro
     defaults: { _controller: PhotoAlbumBundle:Usuarios:altaUsuario }   
 editarUsuario:
-    path: /admin/usuarios/{id}
+    path: /{_locale}/admin/usuarios/{id}
     defaults: { _controller: PhotoAlbumBundle:Usuarios:editarUsuario }       
     

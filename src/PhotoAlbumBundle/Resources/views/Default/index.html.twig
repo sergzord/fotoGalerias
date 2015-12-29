@@ -15,10 +15,10 @@
             </div>
             <div id="contenido">
                 {% block contenido %}
-                    <h2>Bienvenido a Photo albums!</h2>
-                    <strong>Últimos albums :</strong><br/><br/>
+                    <h2>{% trans %}Bienvenido a Photo albums!{% endtrans %}</h2>
+                    <strong>{% trans %}Últimos albums :{% endtrans %}</strong><br/><br/>
                     {% for album in albums %}
-                        <a href="">{{album.descripcion}}</a> - de {{album.usuario.nombre}}<br/>
+                        <a href="">{{album.descripcion}}</a> - {% trans %}de{% endtrans %} {{album.usuario.nombre}}<br/>
                     {% endfor %}
                     <br/>
                     <form action="{{url('crearAlbum')}}">

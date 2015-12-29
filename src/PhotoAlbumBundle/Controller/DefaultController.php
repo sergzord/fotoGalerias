@@ -50,7 +50,6 @@ class DefaultController extends Controller
     public function crearAction(Request $request) 
     {
         $album=new album();
-        
         $em=$this->getDoctrine()->getRepository('PhotoAlbumBundle:usuario');
         $usuarios=$em->findAll();
         
